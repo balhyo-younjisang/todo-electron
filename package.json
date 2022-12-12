@@ -1,0 +1,68 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "Todo App with electron",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "deploy:osx": "electron-builder --mac",
+    "deploy:win": "npm run deploy:win32 && npm run deploy:win64",
+    "deploy:win32": "electron-builder --win nsis:ia32",
+    "deploy:win64": "electron-builder --win nsis:x64"
+  },
+  "build": {
+    "productName": "ToDo With Nyan",
+    "appId": "net.jetalab.ex.startelectron",
+    "asar": true,
+    "mac": {
+      "target": [
+        "default"
+      ]
+    },
+    "dmg": {
+      "title": "ToDo With Nyan"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true
+    },
+    "directories": {
+      "buildResources": "./resources/installer/",
+      "output": "./dist/",
+      "app": "."
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balhyo-younjisang/TodoApp.git"
+  },
+  "author": "balhyo-younjisang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/balhyo-younjisang/TodoApp/issues"
+  },
+  "homepage": "https://github.com/balhyo-younjisang/TodoApp#readme",
+  "devDependencies": {
+    "electron": "^22.0.0",
+    "electron-builder": "^23.6.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "electron-better-ipc": "^2.0.1",
+    "electron-localshortcut": "^3.2.1",
+    "electron-store": "^8.1.0"
+  }
+}
